@@ -1,21 +1,16 @@
 import express, { Router, Request, Response } from 'express';
+import controller from '../controllers';
 
 const router: Router = express.Router();
 
-router.post('/register', (req: Request, res: Response) => {
-  res.send('Hello, world!');
-});
+router.post('/add', controller.addDelivery);
 
-router.post('/login', (req: Request, res: Response) => {
-  res.json('login');
-});
+router.get('/editDelivery/{idDelivery}', controller.editDelivery);
 
-router.delete('/delete/{id}', (req: Request, res: Response) => {
-  res.json('delete');
-});
+router.post('/link', controller.linkDelivery);
 
-router.put('/edit/{id}', (req: Request, res: Response) => {
-  res.json('edit');
-});
+router.get('/getDeliveries/{idLivreur}', controller.getDeliveries);
+
+router.delete('/deleteDelivery/{idDelivery}', controller.deleteDeliveries);
 
 export default router;

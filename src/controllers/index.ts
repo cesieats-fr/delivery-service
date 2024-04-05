@@ -1,21 +1,31 @@
 import { Request, Response } from 'express';
 
-const register = (req: Request, res: Response) => {
+const addDelivery = (req: Request, res: Response) => {
   res.status(200).json({ message: 'Hello, world!' });
 };
 
-const login = (req: Request, res: Response) => {
+const editDelivery = (req: Request, res: Response) => {
   res.status(200).json({ message: 'Hello, world!' });
 };
 
-const deleteAccount = (req: Request, res: Response) => {
+const linkDelivery = (req: Request, res: Response) => {
+  res.status(200).json({ message: 'Hello, world!' });
+};
+
+const getDeliveries = (req: Request, res: Response) => {
+  res.status(200).json({ message: 'Hello, world!' });
+};
+
+const deleteDeliveries = (req: Request, res: Response) => {
   res.status(200).json({ message: 'Hello, world!' });
 };
 
 const controller = {
-  register,
-  login,
-  deleteAccount,
+  addDelivery,
+  editDelivery,
+  linkDelivery,
+  getDeliveries,
+  deleteDeliveries
 };
 
 export default controller;
