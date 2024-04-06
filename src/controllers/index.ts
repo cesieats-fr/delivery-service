@@ -8,14 +8,14 @@ const addDelivery = async (req: Request, res: Response) => {
       idClient: req.body.idClient,
       idRestaurant: req.body.idRestaurant,
       idDeliver: req.body.idDeliver,
-      state: req.body.state,
+      state: 0,
       idOrder: req.body.idOrder,
     };
     const result = await Delivery.create(delivery);
     console.log('result: ' + result);
     res.status(200).json(result);
   } catch (error) {
-    console.log('[DELIVERY-SERVICE] addDelivery error: '+ error);
+    console.log('[DELIVERY-SERVICE] addDelivery error: ' + error);
     res.status(400).json({message: 'an unexpected error occurred'});
   }
 };
@@ -27,7 +27,7 @@ const updateDelivery = async (req: Request, res: Response) => {
     console.log('result after update: ' + result);
     res.status(200).json(result);
   }  catch (error) {
-    console.log('[DELIVERY-SERVICE] updateDelivery error: '+ error);
+    console.log('[DELIVERY-SERVICE] updateDelivery error: ' + error);
     res.status(400).json({message: 'an unexpected error occurred'});
   }
 };
@@ -39,7 +39,7 @@ const linkDelivery = async (req: Request, res: Response) => {
     console.log('result after update: ' + result);
     res.status(200).json(result);
   }  catch (error) {
-    console.log('[DELIVERY-SERVICE] linkDelivery error: '+ error);
+    console.log('[DELIVERY-SERVICE] linkDelivery error: ' + error);
     res.status(400).json({message: 'an unexpected error occurred'});
   }
 };
@@ -51,19 +51,24 @@ const getDelivery = async (req: Request, res: Response) => {
     console.log('id: ' + req.params.id);
     res.status(200).json(result);
   } catch (error) {
-    console.log('[DELIVERY-SERVICE] getDelivery error: '+ error);
+    console.log('[DELIVERY-SERVICE] getDelivery error: ' + error);
     res.status(400).json({message: 'an unexpected error occurred'});
   }
 };
 
-const getDeliveries = async (req: Request, res: Response) => {
+const getAllDeliveries = async (req: Request, res: Response) => {
   try {
-    const filter = {idDeliver: (String)(req.params.idDeliver)};
+    const filter = {
+      idClient: (String)(req.query.client),
+      idDeliver: (String)(req.query.deliver),
+      idOrder: (String)(req.query.order),
+      client: req.query.client,
+    };
     const result = await Delivery.find(filter);
     console.log('result: ' + result);
     res.status(200).json(result);
   } catch (error) {
-    console.log('[DELIVERY-SERVICE] getDeliveries error: '+ error);
+    console.log('[DELIVERY-SERVICE] getDeliveries error: ' + error);
     res.status(400).json({message: 'an unexpected error occurred'});
   }
 };
@@ -74,7 +79,7 @@ const deleteDelivery = async (req: Request, res: Response) => {
     console.log('result: ' + result);
     res.status(200).json(result);
   } catch (error) {
-    console.log('[DELIVERY-SERVICE] deleteDelivery error: '+ error);
+    console.log('[DELIVERY-SERVICE] deleteDelivery error: ' + error);
     res.status(400).json({message: 'an unexpected error occurred'});
   }
 };
@@ -84,8 +89,8 @@ const controller = {
   updateDelivery,
   linkDelivery,
   getDelivery,
-  getDeliveries,
-  deleteDelivery
+  getAllDeliveries,
+  deleteDelivery,
 };
 
 export default controller;
