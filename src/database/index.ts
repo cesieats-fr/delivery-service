@@ -1,13 +1,14 @@
-// import { Schema, model } from 'mongoose';
+import { IDelivery } from 'cesieats-service-types/delivery';
+import mongoose, { Schema, model } from 'mongoose';
 
-// export const accountSchema = new Schema<IAccount>({
-//   id: { type: Number, required: true },
-//   email: { type: String, required: true },
-//   password: { type: String, required: true },
-// });
+const deliverySchema = new Schema<IDelivery>({
+  state: { type: Number, required: true },
+  idClient: { type: String, required: true },
+  idDeliver: { type: String, required: true },
+  idOrder: { type: String, required: true },
+});
 
-// export const Account = model<IAccount>('Account', accountSchema);
-import mongoose from 'mongoose';
+export const Delivery = model<IDelivery>('Delivery', deliverySchema);
 
 export const connectMongoose = () => {
   mongoose

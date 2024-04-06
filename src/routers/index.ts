@@ -5,12 +5,12 @@ const router: Router = express.Router();
 
 router.post('/add', controller.addDelivery);
 
-router.get('/editDelivery/{idDelivery}', controller.editDelivery);
+router.get('/updateDelivery/:idDelivery', controller.updateDelivery);
 
-router.post('/link', controller.linkDelivery);
+router.post('/link/:idDelivery&:idLivreur', controller.linkDelivery);
 
-router.get('/getDeliveries/{idLivreur}', controller.getDeliveries);
+router.get('/getDeliveries/:idLivreur', controller.getDeliveries);
 
-router.delete('/deleteDelivery/{idDelivery}', controller.deleteDeliveries);
+router.delete('/deleteDelivery/:idDelivery', controller.deleteDeliveries);
 
 export default router;
