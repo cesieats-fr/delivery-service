@@ -46,9 +46,9 @@ const linkDelivery = async (req: Request, res: Response) => {
 
 const getDelivery = async (req: Request, res: Response) => {
   try {
-    const result = await Delivery.findById(req.query.id);
+    const result = await Delivery.findById(req.params.id);
     console.log('result: ' + result);
-    console.log('id: ' + req.query.id);
+    console.log('id: ' + req.params.id);
     res.status(200).json(result);
   } catch (error) {
     console.log('[DELIVERY-SERVICE] getDelivery error: '+ error);
@@ -58,7 +58,7 @@ const getDelivery = async (req: Request, res: Response) => {
 
 const getDeliveries = async (req: Request, res: Response) => {
   try {
-    const filter = {idDeliver: (String)(req.query.idDeliver)};
+    const filter = {idDeliver: (String)(req.params.idDeliver)};
     const result = await Delivery.find(filter);
     console.log('result: ' + result);
     res.status(200).json(result);
