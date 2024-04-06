@@ -5,7 +5,7 @@ const router: Router = express.Router();
 
 router.post('/add', controller.addDelivery);
 
-router.post('/updateDelivery', controller.updateDelivery);
+router.post('/updateDeliveryState', controller.updateDeliveryState);
 
 router.post('/link', controller.linkDelivery);
 

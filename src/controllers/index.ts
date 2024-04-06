@@ -20,7 +20,7 @@ const addDelivery = async (req: Request, res: Response) => {
   }
 };
 
-const updateDelivery = async (req: Request, res: Response) => {
+const updateDeliveryState = async (req: Request, res: Response) => {
   try {
     const update = { state: req.body.state };
     const result = await Delivery.findByIdAndUpdate(req.body.id, update);
@@ -86,7 +86,7 @@ const deleteDelivery = async (req: Request, res: Response) => {
 
 const controller = {
   addDelivery,
-  updateDelivery,
+  updateDeliveryState,
   linkDelivery,
   getDelivery,
   getAllDeliveries,
