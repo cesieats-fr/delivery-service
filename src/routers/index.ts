@@ -3,14 +3,16 @@ import controller from '../controllers';
 
 const router: Router = express.Router();
 
-router.post('/add', controller.addDelivery);
+router.post('/add/:idClient&:idRestaurant', controller.addDelivery);
 
-router.get('/updateDelivery/:idDelivery', controller.updateDelivery);
+router.post('/updateDelivery/:id', controller.updateDelivery);
 
-router.post('/link/:idDelivery&:idLivreur', controller.linkDelivery);
+router.post('/link/:idDelivery&:idDeliver', controller.linkDelivery);
 
-router.get('/getDeliveries/:idLivreur', controller.getDeliveries);
+router.get('/getDelivery/:id', controller.getDelivery);
 
-router.delete('/deleteDelivery/:idDelivery', controller.deleteDeliveries);
+router.get('/getDeliveries/:idDeliver', controller.getDeliveries);
+
+router.delete('/deleteDelivery/:id', controller.deleteDelivery);
 
 export default router;
