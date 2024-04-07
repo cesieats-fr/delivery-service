@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { IDelivery } from 'cesieats-service-types/src/delivery';
 import { Delivery } from '../database';
 
+// Ajoute une livraison
 const addDelivery = async (req: Request, res: Response) => {
   try{
     const delivery: IDelivery = {
@@ -20,6 +21,7 @@ const addDelivery = async (req: Request, res: Response) => {
   }
 };
 
+// Change l'état d'une livraison
 const updateDeliveryState = async (req: Request, res: Response) => {
   try {
     const update = { state: req.body.state };
@@ -32,6 +34,7 @@ const updateDeliveryState = async (req: Request, res: Response) => {
   }
 };
 
+// Associe une livraison à un livreur
 const linkDelivery = async (req: Request, res: Response) => {
   try {
     const update = { idDeliver: req.body.idDeliver };
@@ -44,6 +47,7 @@ const linkDelivery = async (req: Request, res: Response) => {
   }
 };
 
+// Retourne une livraison
 const getDelivery = async (req: Request, res: Response) => {
   try {
     const result = await Delivery.findById(req.params.id);
@@ -56,6 +60,7 @@ const getDelivery = async (req: Request, res: Response) => {
   }
 };
 
+// Retourne toutes les livraisons grâce à des filtres [idClient, idDeliver, state]
 const getAllDeliveries = async (req: Request, res: Response) => {
   try {
     const filter = {
@@ -73,6 +78,7 @@ const getAllDeliveries = async (req: Request, res: Response) => {
   }
 };
 
+// Supprime une livraison
 const deleteDelivery = async (req: Request, res: Response) => {
   try {
     const result = await Delivery.findByIdAndDelete(req.body.id);
