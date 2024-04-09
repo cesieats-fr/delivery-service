@@ -1,4 +1,4 @@
-import { IDelivery } from 'cesieats-service-types/delivery';
+import { IDelivery } from 'cesieats-service-types/src/delivery';
 import mongoose, { Schema, model } from 'mongoose';
 
 const deliverySchema = new Schema<IDelivery>({
@@ -6,6 +6,10 @@ const deliverySchema = new Schema<IDelivery>({
   idClient: { type: String, required: true },
   idDeliver: { type: String, required: true },
   idOrder: { type: String, required: true },
+  clientAddress: { type: String, required: true },
+  restaurantAddress: { type: String, required: true },
+  restaurantName: { type: String, required: true },
+  restaurantTelephone: { type: String, required: true },
 });
 
 export const Delivery = model<IDelivery>('Delivery', deliverySchema);
