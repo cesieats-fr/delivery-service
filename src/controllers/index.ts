@@ -64,6 +64,7 @@ const getDelivery = async (req: Request, res: Response) => {
 const getDeliveries = async (req: Request, res: Response) => {
   try {
     const result = await Delivery.find().exec();
+    console.log(result);
     res.status(200).json(result);
   } catch (error) {
     res.status(400).json({ message: 'an unexpected error occurred' });
