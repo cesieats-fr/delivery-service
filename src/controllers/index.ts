@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { IDelivery, EDeliveryState } from 'cesieats-service-types/src/delivery';
 import { EAccountType } from 'cesieats-service-types/src/account';
+import { IDelivery, EDeliveryState } from 'cesieats-service-types/src/delivery';
 import { Delivery } from '../database';
 
 // Ajoute une livraison
