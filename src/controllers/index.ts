@@ -63,7 +63,7 @@ const getDelivery = async (req: Request, res: Response) => {
 // Retourne toutes les livraisons grâce à des filtres [idClient, idDeliver, state]
 const getDeliveries = async (req: Request, res: Response) => {
   try {
-    const result = await Delivery.find();
+    const result = await Delivery.find().exec();
     res.status(200).json(result);
   } catch (error) {
     res.status(400).json({ message: 'an unexpected error occurred' });
