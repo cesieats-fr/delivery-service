@@ -63,6 +63,7 @@ const getDelivery = async (req: Request, res: Response) => {
 // Retourne toutes les livraisons grâce à des filtres [idClient, idDeliver, state]
 const getDeliveries = async (req: Request, res: Response) => {
   try {
+    console.log('getDeliveries');
     const result = await Delivery.find().exec();
     console.log(result);
     res.status(200).json(result);

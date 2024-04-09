@@ -1,7 +1,10 @@
 import express, { Router } from 'express';
 import controller from '../controllers';
+import { middleware } from '../middlewares';
 
 const router: Router = express.Router();
+
+router.use(middleware);
 
 // Ajoute une livraison
 router.post('/addDelivery', controller.addDelivery);
@@ -15,7 +18,7 @@ router.put('/linkDelivery', controller.linkDelivery);
 // Retourne une livraison
 router.get('/getDelivery/:id', controller.getDelivery);
 
-// Retourne toutes les livraisons grâce à des filtres [idClient, idDeliver, state]
+// Retourne toutes les livraisons
 router.get('/getDeliveries', controller.getDeliveries);
 
 // Supprime une livraison
