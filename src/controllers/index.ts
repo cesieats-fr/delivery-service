@@ -1,16 +1,14 @@
 import { Request, Response } from 'express';
-import { EAccountType } from 'cesieats-service-types/src/account';
-import { IDelivery, EDeliveryState } from 'cesieats-service-types/src/delivery';
 import { Delivery } from '../database';
 
 // Ajoute une livraison
 const addDelivery = async (req: Request, res: Response) => {
   try {
-    const delivery: IDelivery = {
+    const delivery = {
       idClient: req.body.idClient,
       idRestaurant: req.body.idRestaurant,
       idDeliver: req.body.idDeliver,
-      state: EDeliveryState.Waiting,
+      state: 0,
       idOrder: req.body.idOrder,
       clientAddress: req.body.clientAddress,
       restaurantName: req.body.restaurantName,
@@ -38,7 +36,7 @@ const updateDeliveryState = async (req: Request, res: Response) => {
 // Associe une livraison à un livreur
 const linkDelivery = async (req: Request, res: Response) => {
   try {
-    if (!res.locals.accountType || res.locals.accountType !== EAccountType.DELIVER)
+    if (!res.locals.accountType || res.locals.accountType !== 1)
       return res.status(401).json({ message: 'unauthorized' });
 
     const update = { idDeliver: res.locals.account._id };
