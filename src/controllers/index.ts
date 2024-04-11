@@ -1,5 +1,7 @@
 import { Request, Response } from 'express';
 import { Delivery } from '../database';
+import { stat } from 'fs';
+import { EDeliveryState } from 'cesieats-service-types/src/delivery';
 
 // Ajoute une livraison
 const addDelivery = async (req: Request, res: Response) => {
@@ -36,11 +38,8 @@ const updateDeliveryState = async (req: Request, res: Response) => {
 // Associe une livraison à un livreur
 const linkDelivery = async (req: Request, res: Response) => {
   try {
-    if (!res.locals.accountType || res.locals.accountType !== 1)
-      return res.status(401).json({ message: 'unauthorized' });
-
-    const update = { idDeliver: res.locals.account._id };
-    const result = await Delivery.findByIdAndUpdate(req.body.id, update);
+    const update = { idDeliver: res.locals.account._id, state: EDeliveryState.GoingToRestaurant };
+    const result = await Delivery.findByIdAndUpdate(req.body.id, update, { new: true });
     res.status(200).json(result);
   } catch (error) {
     res.status(400).json({ message: 'an unexpected error occurred' });
