@@ -37,10 +37,7 @@ const updateDeliveryState = async (req: Request, res: Response) => {
 const linkDelivery = async (req: Request, res: Response) => {
   try {
     const update = { idDeliver: res.locals.account._id, state: 1 };
-    const result = await Delivery.findByIdAndUpdate(res.locals.account._id, update, { new: true }); 
-    console.log(result);
-    console.log(res.locals.account._id);
-    console.log(res.locals.account);   
+    const result = await Delivery.findByIdAndUpdate(req.body.id, update, { new: true });   
     res.status(200).json(result);
   } catch (error) {
     res.status(400).json({ message: 'an unexpected error occurred' });
