@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { Delivery } from '../database';
-import { stat } from 'fs';
 import { EDeliveryState } from 'cesieats-service-types/src/delivery';
 
 // Ajoute une livraison
