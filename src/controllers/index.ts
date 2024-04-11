@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { Delivery } from '../database';
-import { EDeliveryState } from 'cesieats-service-types/src/delivery';
 
 // Ajoute une livraison
 const addDelivery = async (req: Request, res: Response) => {
@@ -37,7 +36,7 @@ const updateDeliveryState = async (req: Request, res: Response) => {
 // Associe une livraison à un livreur
 const linkDelivery = async (req: Request, res: Response) => {
   try {
-    const update = { idDeliver: res.locals.account._id, state: EDeliveryState.GoingToRestaurant };
+    const update = { idDeliver: res.locals.account._id, state: 1 };
     const result = await Delivery.findByIdAndUpdate(req.body.id, update, { new: true });
     res.status(200).json(result);
   } catch (error) {
