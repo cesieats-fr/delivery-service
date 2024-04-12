@@ -7,7 +7,6 @@ const addDelivery = async (req: Request, res: Response) => {
     const delivery = {
       idClient: req.body.idClient,
       idRestaurant: req.body.idRestaurant,
-      idDeliver: req.body.idDeliver,
       state: 0,
       idOrder: req.body.idOrder,
       clientAddress: req.body.clientAddress,

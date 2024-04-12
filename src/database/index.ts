@@ -4,7 +4,7 @@ import mongoose, { Schema, model } from 'mongoose';
 const deliverySchema = new Schema<IDelivery>({
   state: { type: Number, required: true },
   idClient: { type: String, required: true },
-  idDeliver: { type: String, required: true },
+  idDeliver: { type: String, required: false },
   idOrder: { type: String, required: true },
   clientAddress: { type: String, required: true },
   restaurantAddress: { type: String, required: true },
