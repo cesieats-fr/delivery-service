@@ -24,11 +24,10 @@ const addDelivery = async (req: Request, res: Response) => {
 // Change l'état d'une livraison
 const updateDeliveryState = async (req: Request, res: Response) => {
   try {
-    const update = { state: req.body.state };
-    const result = await Delivery.findByIdAndUpdate(req.body.id, update);
+    const result = await Delivery.findByIdAndUpdate(req.body.orderId, { state: req.body.state }, { new: true });
     res.status(200).json(result);
   } catch (error) {
-    res.status(400).json({ message: 'an unexpected error occurred' });
+    res.status(400).json({ message: 'an unexpected error occurred', error });
   }
 };
 
