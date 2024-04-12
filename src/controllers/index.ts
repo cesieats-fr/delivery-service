@@ -33,7 +33,7 @@ const updateDeliveryState = async (req: Request, res: Response) => {
 };
 
 // Associe une livraison à un livreur
-const linkDelivery = async (req: Request, res: Response) => {
+const linkDeliver = async (req: Request, res: Response) => {
   try {
     const update = { idDeliver: res.locals.account._id, state: 1 };
     const result = await Delivery.findByIdAndUpdate(req.body.id, update, { new: true });
@@ -81,7 +81,7 @@ const deleteDelivery = async (req: Request, res: Response) => {
 const controller = {
   addDelivery,
   updateDeliveryState,
-  linkDelivery,
+  linkDeliver,
   getDelivery,
   getDeliveries,
   deleteDelivery,

@@ -13,7 +13,7 @@ router.post('/addDelivery', controller.addDelivery);
 router.put('/updateDeliveryState', controller.updateDeliveryState);
 
 // Associe une livraison à un livreur
-router.put('/linkDelivery', controller.linkDelivery);
+router.put('/linkDeliver', controller.linkDeliver);
 
 // Retourne une livraison
 router.get('/getDelivery/:id', controller.getDelivery);
